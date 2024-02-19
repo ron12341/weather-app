@@ -45,9 +45,3 @@ You can learn more in the [Create React App documentation](https://facebook.gith
 
 To learn React, check out the [React documentation](https://reactjs.org/).
 
-![Screen Shot 2023-05-11 at 3 12 42 AM](https://github.com/ron12341/weather-app_ts/assets/111470858/1d33c1c2-ffca-4e43-8a16-eaf6bea17362)
-
-![Screen Shot 2023-05-11 at 3 11 56 AM](https://github.com/ron12341/weather-app_ts/assets/111470858/99d95dce-133f-4af2-bf28-86b69d02eca7)
-
-![Screen Shot 2023-05-11 at 3 11 24 AM](https://github.com/ron12341/weather-app_ts/assets/111470858/a8197293-4e92-4359-9f59-26ebd133e783)
-
