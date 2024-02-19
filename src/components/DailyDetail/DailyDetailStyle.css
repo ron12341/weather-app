@@ -1,0 +1,16 @@
+#details {
+    font-size: 15px;
+    border: 1px solid white;
+    border-radius: 10px;
+    max-height: 100px;
+}
+
+.row-margin-0 {
+    margin: 0 !important;
+}
+
+@media (max-width: 300px) {
+    #details p {
+        font-size: 4.5vw;
+    }
+}

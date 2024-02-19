@@ -1,0 +1,38 @@
+#cityName {
+  font-size: 30px;
+}
+
+#temperature {
+  font-size: 50px;
+  font-weight: bold;
+}
+
+.biggerDivider {
+  font-size: 20px;
+  font-weight: bold;
+  margin: 0 20px;
+}
+
+.divider {
+  font-size: 15px;
+  font-weight: bold;
+  margin: 0 10px;
+}
+
+p {
+  margin-bottom: 2px !important;
+}
+
+.row {
+  margin: 20px !important;
+}
+
+.text-bold {
+  font-weight: bold;
+}
+
+@media (max-width: 300px) {
+  #cityName {
+    font-size: 10vw;
+  }
+}

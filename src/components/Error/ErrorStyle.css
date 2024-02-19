@@ -1,0 +1,9 @@
+#small-msg {
+  font-size: 16px;
+}
+
+@media (max-width: 400px) {
+  #small-msg {
+    font-size: 4vw;
+  }
+}

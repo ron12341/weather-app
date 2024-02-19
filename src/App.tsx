@@ -1,25 +1,41 @@
-import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import Input from './components/Input/Input';
+import CurrentWeather from './components/CurrentWeather/CurrentWeather';
+import Forecast from './components/Forecast/Forecast';
+import Error from './components/Error/Error';
+import { useFetch } from './services/Fetch';
 
 function App() {
+  const { handleOnSearch, handleChangeUnit, weatherData, forecastData, unit, notFound } =
+    useFetch();
+
+  if (weatherData.name !== '' && !notFound) {
+    document.body.style.backgroundImage = `url('https://source.unsplash.com/1600x900/?${weatherData.name}')`;
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <div id="weather-container" className="container">
+        <Input onSearch={handleOnSearch} changeUnit={handleChangeUnit} />
+        {weatherData.name !== '' && !notFound && (
+          <div className="container">
+            <CurrentWeather weather={weatherData} unit={unit} />
+          </div>
+        )}
+
+        {notFound && (
+          <div id="error-container" className="container">
+            <Error />
+          </div>
+        )}
+      </div>
+
+      {forecastData.length > 0 && !notFound && (
+        <div id="forecast-container" className="container">
+          <Forecast forecast={forecastData} unit={unit} />
+        </div>
+      )}
+    </>
   );
 }
 

@@ -1,0 +1,49 @@
+.curr-unit {
+  font-weight: bolder;
+  transform: scale(1.2);
+}
+
+#celcius-btn,
+#faren-btn {
+  color: aliceblue;
+  font-size: 25px;
+}
+
+#celcius-btn:hover,
+#faren-btn:hover {
+  transform: scale(1.5);
+}
+
+#search-btn {
+  background-color: aliceblue;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+#search-btn:hover {
+  background-color: #d2d2d2;
+}
+
+#btn-group {
+  margin-left: 30px;
+}
+
+#searchbar-container {
+  position: relative;
+}
+
+#option-box-container {
+  position: absolute;
+  top: 100%;
+  width: 100%;
+}
+
+@media (max-width: 325px) {
+  #btn-group {
+    margin: 0;
+  }
+
+  #celcius-btn, #faren-btn {
+    font-size: 5.5vw;
+  }
+}

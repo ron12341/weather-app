@@ -1,0 +1,16 @@
+#options-container {
+  background-color: white;
+  border-radius: 5px;
+  border: 1px solid black;
+}
+
+.options {
+  width: inherit;
+  padding: 5px;
+  color: black;
+  border-radius: 5px;
+}
+
+.options:hover {
+  background-color: rgba(0, 0, 0, 0.3);
+}
