@@ -1,23 +1,18 @@
-import './App.css';
-import Input from './components/Input/Input';
-import CurrentWeather from './components/CurrentWeather/CurrentWeather';
-import Forecast from './components/Forecast/Forecast';
-import Error from './components/Error/Error';
-import { useFetch } from './services/Fetch';
+import "./App.css";
+import Input from "./components/Input/Input";
+import CurrentWeather from "./components/CurrentWeather/CurrentWeather";
+import Forecast from "./components/Forecast/Forecast";
+import Error from "./components/Error/Error";
+import { useFetch } from "./services/Fetch";
 
 function App() {
-  const { handleOnSearch, handleChangeUnit, weatherData, forecastData, unit, notFound } =
-    useFetch();
-
-  if (weatherData.name !== '' && !notFound) {
-    document.body.style.backgroundImage = `url('https://source.unsplash.com/1600x900/?${weatherData.name}')`;
-  }
+  const { handleOnSearch, handleChangeUnit, weatherData, forecastData, unit, notFound } = useFetch();
 
   return (
     <>
       <div id="weather-container" className="container">
         <Input onSearch={handleOnSearch} changeUnit={handleChangeUnit} />
-        {weatherData.name !== '' && !notFound && (
+        {weatherData.name !== "" && !notFound && (
           <div className="container">
             <CurrentWeather weather={weatherData} unit={unit} />
           </div>
