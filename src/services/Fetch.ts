@@ -1,10 +1,11 @@
-import { InputModel, EmptyInputModel } from '../models/InputModel';
-import { useState, useEffect } from 'react';
-import { API_KEY } from './api';
-import { WEATHER_URL, FORECAST_URL } from './url';
-import { CurrentWeatherModel, EmptyCurrentWeatherModel } from '../models/CurrentWeatherModel';
-import { DailyDetailModel } from '../models/DailyDetailModel';
-import { DailyModel } from '../models/DailyModel';
+import { InputModel, EmptyInputModel } from "../models/InputModel";
+import { useState, useEffect } from "react";
+import { WEATHER_URL, FORECAST_URL } from "./url";
+import { CurrentWeatherModel, EmptyCurrentWeatherModel } from "../models/CurrentWeatherModel";
+import { DailyDetailModel } from "../models/DailyDetailModel";
+import { DailyModel } from "../models/DailyModel";
+
+const API_KEY = process.env.REACT_APP_API_KEY;
 
 export const useFetch = () => {
   const [input, setInput] = useState<InputModel>(EmptyInputModel);
@@ -13,25 +14,25 @@ export const useFetch = () => {
   const [notFound, setNotFound] = useState<boolean>(false);
 
   useEffect(() => {
-    if (input.city === '') return;
+    if (input.city === "") return;
 
     fetch(`${FORECAST_URL}${input.city}&units=${input.unit}&appid=${API_KEY}`)
-      .then(response => response.json())
-      .then(data => {
+      .then((response) => response.json())
+      .then((data) => {
         const tempForecast = {
           list: data.list,
         };
         setForecastData(getDayNight(tempForecast));
         setNotFound(false);
       })
-      .catch(error => {
+      .catch((error) => {
         console.log(error);
         setNotFound(true);
       });
 
     fetch(`${WEATHER_URL}${input.city}&units=${input.unit}&appid=${API_KEY}`)
-      .then(response => response.json())
-      .then(data => {
+      .then((response) => response.json())
+      .then((data) => {
         const tempWeatherData = {
           name: data.name,
           main: data.main,
@@ -41,13 +42,13 @@ export const useFetch = () => {
         };
         setWeatherData(tempWeatherData);
       })
-      .catch(error => {
+      .catch((error) => {
         console.log(error);
       });
   }, [input]);
 
   const handleOnSearch = (search: InputModel) => {
-    if (search.city === '') return;
+    if (search.city === "") return;
 
     setInput(search);
   };
@@ -64,8 +65,7 @@ export const useFetch = () => {
 
     for (let i = 0; i < forecast.list.length; i++) {
       let item_dt = forecast.list[i].dt_txt;
-      if (item_dt.includes('06:00:00') || item_dt.includes('18:00:00'))
-        tempDaily.push(forecast.list[i]);
+      if (item_dt.includes("06:00:00") || item_dt.includes("18:00:00")) tempDaily.push(forecast.list[i]);
     }
 
     return tempDaily.slice(-10); //get day and night of the next 5 days

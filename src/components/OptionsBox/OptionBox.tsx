@@ -1,9 +1,9 @@
-import './OptionBoxStyle.css';
-import { useEffect, useState } from 'react';
-import { API_KEY } from '../../services/api';
-import { OPTIONS_URL } from '../../services/url';
+import "./OptionBoxStyle.css";
+import { useEffect, useState } from "react";
+import { OPTIONS_URL } from "../../services/url";
 
 const OPTION_LIMIT = 5;
+const API_KEY = process.env.REACT_APP_API_KEY;
 
 interface OptionBoxProps {
   search: string;
@@ -15,12 +15,12 @@ const OptionBox = ({ search, selectOption }: OptionBoxProps) => {
 
   const getSearchOptions = (input: string) => {
     fetch(`${OPTIONS_URL}${input}&limit=${OPTION_LIMIT}&appid=${API_KEY}`)
-      .then(response => response.json())
-      .then(data => setOptions(data));
+      .then((response) => response.json())
+      .then((data) => setOptions(data));
   };
 
   useEffect(() => {
-    if (search === '') {
+    if (search === "") {
       setOptions([]);
       return;
     }
