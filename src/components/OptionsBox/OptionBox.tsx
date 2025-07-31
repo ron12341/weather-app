@@ -14,7 +14,7 @@ const OptionBox = ({ search, selectOption }: OptionBoxProps) => {
   const [options, setOptions] = useState<[]>([]);
 
   const getSearchOptions = (input: string) => {
-    fetch(`${OPTIONS_URL}${input}&limit=${OPTION_LIMIT}&appid=${API_KEY}`)
+    fetch(`/.netlify/functions/cities?input=${input}&limit=${OPTION_LIMIT}`)
       .then((response) => response.json())
       .then((data) => setOptions(data));
   };

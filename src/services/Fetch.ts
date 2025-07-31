@@ -5,8 +5,6 @@ import { CurrentWeatherModel, EmptyCurrentWeatherModel } from "../models/Current
 import { DailyDetailModel } from "../models/DailyDetailModel";
 import { DailyModel } from "../models/DailyModel";
 
-const API_KEY = process.env.REACT_APP_API_KEY;
-
 export const useFetch = () => {
   const [input, setInput] = useState<InputModel>(EmptyInputModel);
   const [weatherData, setWeatherData] = useState<CurrentWeatherModel>(EmptyCurrentWeatherModel);
@@ -16,34 +14,27 @@ export const useFetch = () => {
   useEffect(() => {
     if (input.city === "") return;
 
-    fetch(`${FORECAST_URL}${input.city}&units=${input.unit}&appid=${API_KEY}`)
+    fetch(`/.netlify/functions/weather?city=${input.city}&unit=${input.unit}`)
       .then((response) => response.json())
       .then((data) => {
-        const tempForecast = {
-          list: data.list,
+        const forecast = {
+          list: data.forecastData.list,
         };
-        setForecastData(getDayNight(tempForecast));
+        setForecastData(getDayNight(forecast));
+
+        const tempWeatherData = {
+          name: data.weatherData.name,
+          main: data.weatherData.main,
+          sys: data.weatherData.sys,
+          wind: data.weatherData.wind,
+          weather: data.weatherData.weather[0],
+        };
+        setWeatherData(tempWeatherData);
         setNotFound(false);
       })
       .catch((error) => {
         console.log(error);
         setNotFound(true);
-      });
-
-    fetch(`${WEATHER_URL}${input.city}&units=${input.unit}&appid=${API_KEY}`)
-      .then((response) => response.json())
-      .then((data) => {
-        const tempWeatherData = {
-          name: data.name,
-          main: data.main,
-          sys: data.sys,
-          wind: data.wind,
-          weather: data.weather[0],
-        };
-        setWeatherData(tempWeatherData);
-      })
-      .catch((error) => {
-        console.log(error);
       });
   }, [input]);
 
