@@ -1,6 +1,5 @@
 import { InputModel, EmptyInputModel } from "../models/InputModel";
 import { useState, useEffect } from "react";
-import { WEATHER_URL, FORECAST_URL } from "./url";
 import { CurrentWeatherModel, EmptyCurrentWeatherModel } from "../models/CurrentWeatherModel";
 import { DailyDetailModel } from "../models/DailyDetailModel";
 import { DailyModel } from "../models/DailyModel";

@@ -1,9 +1,7 @@
 import "./OptionBoxStyle.css";
 import { useEffect, useState } from "react";
-import { OPTIONS_URL } from "../../services/url";
 
 const OPTION_LIMIT = 5;
-const API_KEY = process.env.REACT_APP_API_KEY;
 
 interface OptionBoxProps {
   search: string;
